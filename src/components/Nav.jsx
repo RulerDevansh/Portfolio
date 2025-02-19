@@ -7,6 +7,7 @@ export default function Nav() {
     const [toggle, setToggle] = useState(false);
     return (
         <nav className="pt-6 pl-6 pr-6 sm:pt-16 sm:pl-16 sm:pr-16  w-full flex items-center fixed py-5 top-0 z-50 ">
+            
             <div className="w-full flex justify-between items-center max-w-10xl mx-auto">
 
                 <Link to="/" className="flex items-center gap-2" 
@@ -46,6 +47,8 @@ export default function Nav() {
                     </li>
 
                 </ul>
+
+                
                 <div className="sm:hidden flex flex-1 justify-end items-center">
                     <img
                         src={toggle ? close : menu}
@@ -59,30 +62,26 @@ export default function Nav() {
                         } p-6 black-gradient absolute top-20 right-0 mx-4 my-2 min-w-[140px] z-10 rounded-xl`
                     }>
                         <ul className='list-none flex justify-end items-start flex-1 flex-col gap-4'>
-                            <li className="font-poppins font-medium cursor-pointer text-[16px]">
-                                
-                                <NavLink to="/about" className={`${active === "about" ? "text-pink-600" : "text-secondary"
+                            <li className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "about" ? "text-pink-600" : "text-secondary"
                                     } `
                                     } onClick={() => {
                                         setToggle(!toggle);
                                         setActive("about");}}>
-                                    About</NavLink>
+                                    <a href="#about">About</a>
                             </li>
-                            <li className="font-poppins font-medium cursor-pointer text-[16px]">
-                                <NavLink to="/projects" className={`${active === "projects" ? "text-pink-600" : "text-secondary"
+                            <li className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "projects" ? "text-pink-600" : "text-secondary"
                                     } `
                                     } onClick={() => {
                                         setToggle(!toggle);
                                         setActive("projects");}}>
-                                    Projects</NavLink>
+                                    <a href="#projects">Projects</a>
                             </li>
-                            <li className="font-poppins font-medium cursor-pointer text-[16px]">
-                                <NavLink to="/contact" className={`${active === "contact" ? "text-pink-600" : "text-secondary"
+                            <li className={`font-poppins font-medium cursor-pointer text-[16px] ${active === "contact" ? "text-pink-600" : "text-secondary"
                                     }`
                                     } onClick={() => {
                                     setToggle(!toggle);
                                     setActive("contact");}}>
-                                Contact</NavLink>
+                                <a href="#contact">Contact</a>
                             </li>
                         </ul>
 

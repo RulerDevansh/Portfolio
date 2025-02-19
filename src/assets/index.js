@@ -28,7 +28,7 @@ import Todo from "./Todo.png";
 import YoutubeFeed from "./YoutubeFeed.png"
 import Portfolio from "./portfolio.png";
 
-
+import MouseTrackerRobotVid from "./mouse_robit_mobile.mp4";
 
 export {
   logo,
@@ -51,4 +51,5 @@ export {
   Todo,
   YoutubeFeed,
   Portfolio,
+  MouseTrackerRobotVid,
 };

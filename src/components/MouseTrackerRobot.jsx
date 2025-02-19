@@ -1,31 +1,27 @@
-import { useState, useEffect, lazy, Suspense } from "react";
+import React, { lazy, Suspense, useState, useEffect } from "react";
+import { MouseTrackerRobotVid } from "../assets";
 
-// Using lazy loading for optimization
+// Lazy import Spline component
 const LazySpline = lazy(() => import("@splinetool/react-spline"));
 
 export default function App() {
-  const [sceneUrl, setSceneUrl] = useState(
-    "https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" 
-  );
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (window.innerWidth < 640) {
-        setSceneUrl("https://prod.spline.design/e99FgxLyrb54wIT5/scene.splinecode");
-      } else {
-        setSceneUrl("https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" );
-      }
-    };
-
-    handleResize();
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    
     window.addEventListener("resize", handleResize);
-
+    
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   return (
-    <Suspense >
-      <LazySpline scene={sceneUrl} />
+    <Suspense>
+      {isMobile ? (
+        <video src={MouseTrackerRobotVid} autoPlay loop muted className="w-full h-full  object-cover" />
+      ) : (
+        <LazySpline scene="https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" />
+      )}
     </Suspense>
   );
 }

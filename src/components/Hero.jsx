@@ -23,7 +23,7 @@ function hero() {
           
         </div>
       </div>
-        <div className='h-[100%] w-[100%] sm:w-[150%] mt-20 absolute'>
+        <div className='h-[100%] w-[100%] sm:w-[150%] mt-20 sm:absolute'>
             <MouseTrackerRobot/>
         </div>
         <div className='absolute bottom-3 w-full flex justify-center items-center'>
