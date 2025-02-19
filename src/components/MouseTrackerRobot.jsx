@@ -1,29 +1,30 @@
-import { useState, useEffect } from "react";
-import Spline from "@splinetool/react-spline";
+import { useState, useEffect, lazy, Suspense } from "react";
+
+const LazySpline = lazy(() => import("@splinetool/react-spline"));
 
 export default function App() {
   const [sceneUrl, setSceneUrl] = useState(
-    "https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode"
+    "https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" 
   );
 
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth < 640) {
-        setSceneUrl("https://prod.spline.design/e99FgxLyrb54wIT5/scene.splinecode" );
+        setSceneUrl("https://prod.spline.design/e99FgxLyrb54wIT5/scene.splinecode");
       } else {
-        setSceneUrl("https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode");
+        setSceneUrl("https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" );
       }
     };
 
-    
     handleResize();
-
-    
     window.addEventListener("resize", handleResize);
 
-    
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
-  return <Spline scene={sceneUrl} />;
+  return (
+    <Suspense fallback={<div>Loading 3D Scene...</div>}>
+      <LazySpline scene={sceneUrl} />
+    </Suspense>
+  );
 }

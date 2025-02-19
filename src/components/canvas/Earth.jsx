@@ -1,24 +1,25 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useMemo, useRef } from "react";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls, Preload, useGLTF } from "@react-three/drei";
-
 import CanvasLoader from "../Loader";
 
 const Earth = () => {
-  const earth = useGLTF("./planet/scene.gltf"); // hook to load the 3d model
+  const earthRef = useRef();
+  const { scene } = useGLTF("./planet/scene.gltf");
 
-  return (
-    <primitive object={earth.scene} scale={2.5} position-y={0} rotation-y={0} />
-  );
+  const memoizedEarth = useMemo(() => {
+    return <primitive object={scene} scale={2.3} position={[0, -0.5, 0]} />;
+  }, [scene]);
+
+  return <group ref={earthRef}>{memoizedEarth}</group>;
 };
 
 const EarthCanvas = () => {
   return (
-    // Making canvas to display the 3d model imported from gltf file
     <Canvas
       shadows
-      frameloop='demand'
-      dpr={[1, 2]}
+      frameloop="demand"
+      dpr={[1, 1.5]} // Reduce max DPR for better performance
       gl={{ preserveDrawingBuffer: true }}
       camera={{
         fov: 45,
@@ -28,13 +29,12 @@ const EarthCanvas = () => {
       }}
     >
       <Suspense fallback={<CanvasLoader />}>
-        <OrbitControls
-          autoRotate
-          enableZoom={false}
-          autoRotateSpeed={4}
-        />
+        <OrbitControls 
+         autoRotate
+         enableZoom={false} 
+         autoRotateSpeed={2.0} 
+         />
         <Earth />
-
         <Preload all />
       </Suspense>
     </Canvas>
