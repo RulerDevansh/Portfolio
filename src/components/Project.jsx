@@ -69,7 +69,7 @@ const projects = [
       Deploy_link : "https://rulerdevansh.github.io/Currency-Converter/",
     },
     {
-        name: "Youtube FeedInhancer",
+        name: "Youtube FeedEnhancer",
         description:
           "A Python Script that uses llama AI To search Given Keyword on Youtube and Imrove User's Feed",
         tags: [
@@ -83,12 +83,13 @@ const projects = [
           },
         ],
         image: YoutubeFeed,
-        source_code_link: "https://github.com/RulerDevansh/YouTube-Feed-Inhancer",
+        source_code_link: "https://github.com/RulerDevansh/YouTube-Feed-Enhancer",
+        Deploy_link: "https://github.com/RulerDevansh/YouTube-Feed-Enhancer",
     },
     {
-      name: "Rock Paper Sissors Game",
+      name: "Rock Paper Scissors Game",
       description:
-        "Rock Paper Sissors Game which also stores score Using HTML CSS JS",
+        "Rock Paper Scissors Game which also stores score Using HTML CSS JS",
       tags: [
         {
           name: "HTML",
