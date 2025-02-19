@@ -1,32 +1,12 @@
 import {Nav,Hero,About,TechBalls,Project, Contact, Stars} from './components'
-import { motion } from "framer-motion";
 import {github , linkedln} from './assets'
 
 function App() {
   return (
     <div>
-        {/* <h1 className="">Hello </h1> */}
+        {/* <h1 className="">Devansh Srivastava</h1> */}
       <Nav />
-
       <Hero />
-      <a href='#about'>
-        <div className='absolute  w-full flex justify-center items-center -mt-11 '>
-            <div className='w-[30px] h-[45px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
-              <motion.div
-                animate={{
-                  y: [0, 15, 0],
-                }}
-                transition={{
-                  duration: 1,
-                  repeat: Infinity,
-                  repeatType: "loop",
-                }}
-                className='w-3 h-2 rounded-full bg-secondary'
-              />
-            </div>
-        </div>
-      </a>
-
       <About />
       <TechBalls/>
       <Project/>
