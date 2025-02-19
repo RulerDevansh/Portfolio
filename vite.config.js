@@ -10,15 +10,8 @@ export default defineConfig({
     },
   },
   base: "/Portfolio/",  
-  build: {  
-    chunkSizeWarningLimit: 100000,
-    rollupOptions: {  
-      output: {  
-        manualChunks: {  
-          vendor: ['react', 'react-dom'],
-        },  
-      },  
-    },  
+  define: {
+    'process.env': process.env,
   },
 });
 

@@ -24,7 +24,7 @@ export default function App() {
   }, []);
 
   return (
-    <Suspense fallback={<div>Loading 3D Scene...</div>}>
+    <Suspense >
       <LazySpline scene={sceneUrl} />
     </Suspense>
   );
