@@ -138,4 +138,4 @@ function Contact() {
   )
 }
 
-export default SectionWrapper(Contact, "contact" ,false);
+export default SectionWrapper(Contact, "contact");

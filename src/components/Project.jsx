@@ -192,4 +192,4 @@ function Project() {
   )
 }
 
-export default SectionWrapper(Project,"projects" ,true)
+export default SectionWrapper(Project,"projects")

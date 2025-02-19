@@ -55,4 +55,4 @@ function TechBalls() {
   )
 }
 
-export default SectionWrapper(TechBalls, 'techBalls' ,true)
+export default SectionWrapper(TechBalls, 'techBalls')

@@ -28,7 +28,7 @@ const Skills = [
 const SkillsCard = ({ index, title, icon }) => (
   <Tilt className='xs:w-[250px] w-full'>
     <motion.div
-      variants={fadeIn("right", "spring", index * 0.5, 0.65)}
+      variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
     >
       <div
@@ -99,4 +99,4 @@ function About() {
   )
 }
 
-export default SectionWrapper(About,"about",false);
+export default SectionWrapper(About,"about");
