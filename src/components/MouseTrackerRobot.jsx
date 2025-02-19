@@ -16,9 +16,15 @@ export default function App() {
   }, []);
 
   return (
-    <Suspense>
+    <Suspense fallback={<div className="w-full h-full flex items-center justify-center text-violet-400">Loading...</div>}>
       {isMobile ? (
-        <video src={MouseTrackerRobotVid} autoPlay loop muted className="w-full h-full  object-cover" />
+        <video 
+          src={MouseTrackerRobotVid} 
+          autoPlay 
+          loop 
+          muted 
+          className="w-full h-full object-cover" 
+        />
       ) : (
         <LazySpline scene="https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" />
       )}
