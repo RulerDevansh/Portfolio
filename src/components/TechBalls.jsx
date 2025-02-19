@@ -27,7 +27,7 @@ function TechBalls() {
       <div className="flex flex-row flex-wrap justify-center gap-10">
         {technologies.map((technology) => (
           <div className="w-28 h-28 cursor-pointer" key={technology.name}>
-            <Suspense fallback={null}>
+            <Suspense fallback={<div></div>}>
               <Ball icon={technology.icon} />
             </Suspense>
           </div>
