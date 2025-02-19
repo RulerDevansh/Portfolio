@@ -71,7 +71,7 @@ const projects = [
     {
         name: "Youtube FeedEnhancer",
         description:
-          "A Python Script that uses llama AI To search Given Keyword on Youtube and Imrove User's Feed",
+          "A Python Script that uses llama AI To search Given Keyword on Youtube and Improve User's Feed",
         tags: [
           {
             name: "Python",
