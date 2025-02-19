@@ -1,10 +1,9 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import { SectionWrapper } from "../HigherOrderComponent";
 import { css, git, html, javascript, reactjs, redux, spline, tailwind, threejs } from "../assets";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
-
-const Ball = lazy(() => import("./canvas").then(module => ({ default: module.Ball })));
+import { Ball } from "./canvas";
 
 function TechBalls() {
   const technologies = [
@@ -21,15 +20,13 @@ function TechBalls() {
 
   return (
     <>
-      <motion.p variants={fadeIn("", "", 0.1, 1)} className="m-2 text-violet-200 text-[20px] max-w-3xl leading-[30px] ">
-        Have fun spinning the Tech balls around! &nbsp;&nbsp; <span className="text-secondary text-sm">Hold and drag!! </span>
+      <motion.p variants={fadeIn("", "", 0.1, 1)} className="m-2 text-violet-200 text-[20px] max-w-3xl leading-[30px]">
+        Have fun spinning the Tech balls around! &nbsp;&nbsp; <span className="text-secondary text-sm">Hold and drag!!</span>
       </motion.p>
       <div className="flex flex-row flex-wrap justify-center gap-10">
         {technologies.map((technology) => (
           <div className="w-28 h-28 cursor-pointer" key={technology.name}>
-            <Suspense fallback={<div></div>}>
-              <Ball icon={technology.icon} />
-            </Suspense>
+            <Ball icon={technology.icon} />
           </div>
         ))}
       </div>
