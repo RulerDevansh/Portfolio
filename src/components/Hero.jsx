@@ -23,7 +23,7 @@ function hero() {
         </div>
       </div>
         <div className='h-[150%] w-[100%] sm:w-[150%] mt-20 absolute'>
-            {/* <MouseTrackerRobot/> */}
+            <MouseTrackerRobot/>
         </div>
     </section>
   )
