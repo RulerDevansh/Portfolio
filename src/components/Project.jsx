@@ -26,7 +26,7 @@ const projects = [
       ],
       image: Portfolio,
       source_code_link: "https://github.com/RulerDevansh/Portfolio",
-      Deploy_link: "https://rulerdevansh.github.io/Portfolio/",
+      Deploy_link: "https://devansh-57a92.web.app/",
     },
     {
         name: "Todo App",
