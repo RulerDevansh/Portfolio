@@ -1,5 +1,6 @@
 import { useState, useEffect, lazy, Suspense } from "react";
 
+// Using lazy loading for optimization
 const LazySpline = lazy(() => import("@splinetool/react-spline"));
 
 export default function App() {
