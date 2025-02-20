@@ -11,12 +11,12 @@ const Ball = ({ imgUrl }) => {
   const material = useMemo(
     () => (
       <meshStandardMaterial
-        color="#fff1db" 
+        color="#fff1db"
         polygonOffset
         polygonOffsetFactor={-5}
         flatShading
-        emissive="#fff0d6" 
-        emissiveIntensity={0.1} 
+        emissive="#fff0d6"
+        emissiveIntensity={0.1}
       />
     ),
     []

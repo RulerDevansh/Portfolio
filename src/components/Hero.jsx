@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 function hero() {
   return (
-    <section className='hero relative w-full h-screen mx-auto overflow-y-hidden overflow-x-hidden'>
+    <section className='hero relative w-full h-screen mx-auto overflow-y-hidden overflow-x-hidden z-0'>
       <div
         className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto p-6 sm:p-16 flex flex-row items-start gap-5`}
       >
@@ -23,7 +23,7 @@ function hero() {
           
         </div>
       </div>
-        <div className='h-[100%] w-[100%] sm:w-[150%] mt-20 sm:absolute'>
+        <div className='h-[80%] w-[100%] sm:w-[150%] mt-20 absolute  bottom-0 z-[-1]'>
             <MouseTrackerRobot/>
         </div>
         <div className='absolute bottom-3 w-full flex justify-center items-center'>
