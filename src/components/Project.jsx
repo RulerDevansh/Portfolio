@@ -179,7 +179,7 @@ function Project() {
                         variants={fadeIn("","",0.1,1)}
                         className='mt-4 text-violet-200 text-[17px] max-w-3xl leading-[30px] '
                       >
-                        Here are some of the projects I've worked on. Click on the cards image to view the Deployed WebSite
+                        Here are some of the projects I've worked on. Click on the cards image to view the Deployed WebSite.
                       </motion.p>
         </motion.div>
         
