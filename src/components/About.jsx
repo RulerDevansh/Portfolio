@@ -26,7 +26,7 @@ const Skills = [
 
 
 const SkillsCard = ({ index, title, icon }) => (
-  <Tilt className='xs:w-[250px] w-full'>
+  <Tilt className='w-[250px]'>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
@@ -90,7 +90,7 @@ function About() {
           Technologies I Know
         </h2>
       </motion.div>
-      <div className='mt-20 flex flex-wrap gap-10'>
+      <div className='mt-20 flex flex-wrap  align-center justify-center gap-10'>
         {Skills.map((skill, index) => (
           <SkillsCard key={skill.title} index={index} {...skill} />
         ))}

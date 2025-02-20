@@ -122,7 +122,7 @@ function Project() {
                 scale: 1,
                 speed: 450,
               }}
-              className='bg-tertiary p-5 rounded-2xl sm:w-[360px] w-full'
+              className='bg-tertiary p-5 rounded-2xl w-[360px]'
             >
               <div className='relative w-full h-[230px]' onClick={() => window.open(Deploy_link, "_blank")}>
                 <img
@@ -183,7 +183,7 @@ function Project() {
                       </motion.p>
         </motion.div>
         
-        <div className='mt-20 flex flex-wrap gap-7'>
+        <div className='mt-20 flex flex-wrap gap-7 align-center justify-center'>
         {projects.map((project, index) => (
           <ProjectCard key={`project-${index}`} index={index} {...project} />
         ))}
