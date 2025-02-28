@@ -43,7 +43,7 @@ const Ball = ({ imgUrl }) => {
 
 const BallCanvas = ({ icon }) => {
   return (
-    <Canvas frameloop="always" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+    <Canvas frameloop="always" dpr={[1, 1.5]} gl={{ preserveDrawingBuffer: false }}>
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} enablePan={false} enableRotate />
         <Ball imgUrl={icon} />
@@ -54,4 +54,3 @@ const BallCanvas = ({ icon }) => {
 };
 
 export default BallCanvas;
-

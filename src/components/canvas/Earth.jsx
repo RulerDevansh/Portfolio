@@ -19,8 +19,8 @@ const EarthCanvas = () => {
     <Canvas
       shadows
       frameloop="demand"
-      dpr={[1, 1.5]} // Reduce max DPR for better performance
-      gl={{ preserveDrawingBuffer: true }}
+      dpr={[1, 1.5]}
+      gl={{ preserveDrawingBuffer: false}}
       camera={{
         fov: 45,
         near: 0.1,
@@ -34,7 +34,7 @@ const EarthCanvas = () => {
          enableZoom={false} 
          autoRotateSpeed={2.5}
          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2} 
+         minPolarAngle={Math.PI / 2} 
          />
         <Earth />
         <Preload all />
