@@ -9,18 +9,6 @@ function App() {
     setYear(new Date().getFullYear());
   }, []);
 
-  useEffect(() => {
-    const checkScreenWidth = () => window.innerWidth < 768;
-
-    if (checkScreenWidth()) {
-      const interval = setInterval(() => {
-        window.location.reload();
-      }, 120000); // 120000ms = 2 minutes
-
-      return () => clearInterval(interval);
-    }
-  }, []);
-
   return (
     <div>
       {/* <h1 className="">Devansh Srivastava</h1> */}

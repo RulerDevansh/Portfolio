@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 
@@ -14,6 +14,21 @@ function Contact() {
         message: "",
     });
     const [loading, setLoading] = useState(false);
+
+    // Check if form has content
+    const isFormFilled = form.name.trim() !== "" || form.email.trim() !== "" || form.message.trim() !== "";
+
+    useEffect(() => {
+        const handleReload = () => {
+            if (window.innerWidth < 768 && !isFormFilled) {
+                window.location.reload();
+            }
+        };
+
+        const interval = setInterval(handleReload, 120000); // Reload every 2 minutes
+
+        return () => clearInterval(interval); // Cleanup on unmount
+    }, [form]); // Runs effect when form updates
 
     const handleChange = (e) => {
         const { name, value } = e.target;
