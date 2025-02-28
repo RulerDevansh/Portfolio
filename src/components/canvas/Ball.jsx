@@ -23,9 +23,9 @@ const Ball = ({ imgUrl }) => {
   );
 
   return (
-    <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.5}>
-      <ambientLight intensity={0.35} /> 
-      <directionalLight intensity={0.85} position={[2, 2, 2]} /> 
+    <Float speed={1.5} rotationIntensity={0.8} floatIntensity={1.5} floatingRange={[-0.25, 0.25]}>
+      <ambientLight intensity={0.3} /> 
+      <directionalLight intensity={0.85} position={[0, 0, 0.05]}/> 
       <mesh ref={meshRef} castShadow receiveShadow scale={2.75}>
         {geometry}
         {material}
@@ -43,7 +43,7 @@ const Ball = ({ imgUrl }) => {
 
 const BallCanvas = ({ icon }) => {
   return (
-    <Canvas frameloop="demand" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
+    <Canvas frameloop="always" dpr={[1, 2]} gl={{ preserveDrawingBuffer: true }}>
       <Suspense fallback={<CanvasLoader />}>
         <OrbitControls enableZoom={false} enablePan={false} enableRotate />
         <Ball imgUrl={icon} />
@@ -54,3 +54,4 @@ const BallCanvas = ({ icon }) => {
 };
 
 export default BallCanvas;
+
