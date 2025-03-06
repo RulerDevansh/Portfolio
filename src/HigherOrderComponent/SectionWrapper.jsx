@@ -12,8 +12,9 @@ const HigherOrderComponent = (Component, idName) => // HIGHER ORDER FUNCTION
         whileInView='show'
         viewport={{once:true, amount: 0.25 }}
         className={`sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+        id={idName}
       >
-        <span className='hash-span' id={idName}>
+        <span className='hash-span'>
           &nbsp;
         </span>
 
