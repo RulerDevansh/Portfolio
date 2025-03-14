@@ -44,4 +44,4 @@ function TechBalls() {
   );
 }
 
-export default SectionWrapper(TechBalls, "techBalls");
+export default SectionWrapper(TechBalls, "about");

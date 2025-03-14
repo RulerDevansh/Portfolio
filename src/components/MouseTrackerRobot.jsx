@@ -4,6 +4,7 @@ import { MouseTrackerRobotVid } from "../assets";
 
 export default function App() {
   const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const handleResize = () => setIsMobile(window.innerWidth < 768);
@@ -24,7 +25,17 @@ export default function App() {
           className="w-full h-full object-cover" 
         />
       ) : (
-        <Spline scene="https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode" />
+        <div className="relative w-full h-screen flex items-center justify-center">
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-[#0e8ec1]"></div>
+            </div>
+          )}
+          <Spline 
+            scene="https://prod.spline.design/9A21Z5cMGPwm-wgV/scene.splinecode"
+            onLoad={() => setIsLoading(false)}
+          />
+        </div>
       )}
     </>
   );
