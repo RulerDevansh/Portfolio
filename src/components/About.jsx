@@ -4,7 +4,8 @@ import { motion } from 'framer-motion'
 import { fadeIn, textVariant } from "../utils/motion";
 import { c, cpp, css, dsa, html, java, javascript, oop, python, reactjs, redux, spline, sql, tailwind } from '../assets';
 import { SectionWrapper } from '../HigherOrderComponent';
-import Rating from './Rating';
+import { staggerContainer } from '../utils/motion';
+
 
 const libraries = [
   {
@@ -68,7 +69,7 @@ const techstack = [
 ];
 
 const SkillsCard = ({ index, title, icon }) => (
-  <Tilt className='w-36 sm:w-48'>
+  <Tilt className='w-32 sm:w-48'>
     <motion.div
       variants={fadeIn("right", "spring", index * 0.5, 0.75)}
       className='w-full green-pink-gradient p-[1px] rounded-[20px] shadow-card'
@@ -98,10 +99,21 @@ const SkillsCard = ({ index, title, icon }) => (
 
 function About() {
   return (
-    <>
+    <motion.section
+            variants={staggerContainer()}
+            className={`sm:px-16 px-6 sm:py-16 py-10 max-w-7xl mx-auto relative z-0`}
+            id="about"
+            initial='hidden'
+            whileInView='show'
+            viewport={{once:true, amount: 0.05}}
+          >
       <motion.div
       variants={textVariant()}
       >
+        <span className='hash-span'>
+          &nbsp;
+        </span>
+
         <h2
         className='text-violet-300 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]'
         >
@@ -136,7 +148,7 @@ Let's connect and build something amazing! 🚀<br /><br />
           My Tech Stack
         </h2>
       </motion.div>
-      <div className='mt-10 flex flex-wrap  align-center justify-center gap-10'>
+      <div className='mt-10 flex flex-wrap  align-center justify-center gap-2 sm:gap-10'>
         {techstack.map((skill, index) => (
           <SkillsCard key={skill.title} index={index} {...skill} />
         ))}
@@ -151,7 +163,7 @@ Let's connect and build something amazing! 🚀<br /><br />
           Liberaries / Tools I Know
         </h2>
       </motion.div>
-      <div className='mt-10 flex flex-wrap  align-center justify-center gap-10'>
+      <div className='mt-10 flex flex-wrap  align-center justify-center gap-2 sm:gap-10'>
         {libraries.map((skill, index) => (
           <SkillsCard key={skill.title} index={index} {...skill} />
         ))}
@@ -176,11 +188,9 @@ Let's connect and build something amazing! 🚀<br /><br />
         }}
           >These Update In RealTime !! 😊</motion.span> 
         </h2>
-      </motion.div>
-      <Rating />
-      
-        </>
+      </motion.div>      
+    </motion.section>
       )
-        }
+}
 
-        export default SectionWrapper(About,"about");
+export default SectionWrapper(About,"about");

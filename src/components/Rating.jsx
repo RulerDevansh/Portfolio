@@ -7,12 +7,17 @@ import { CodeChef, CodeForces } from '../assets';
 function Rating() {
   const [CodeChefRating, setCodeChefRating] = useState({ current: 1462, max: 1522 });// INITIAL RATING (in case of error)
   const [CodeForcesRating, setCodeForcesRating] = useState({ current: 942, max: 942 });
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const [refresh, setRefresh] = useState(0);
 
   const corsProxy = "https://api.allorigins.win/get?url=";
 
   const fetchRatings = useCallback(async (url, site) => {
     try {
       const response = await fetch(`${corsProxy}${encodeURIComponent(url)}`);
+      if (!response.ok) throw new Error(`Failed to fetch ${site}`);
+      
       const data = await response.json();
       const html = data.contents;
 
@@ -39,15 +44,19 @@ function Rating() {
           );
         }
       }
-    } catch (error) {
-      console.error(`Error fetching ${site} data:`, error);
+      setLoading(false);
+      setError(null);
+    } catch (err) {
+      setError(`Error loading data. Retrying...`);
+      setTimeout(() => setRefresh(prev => prev + 1), 5000);
     }
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     fetchRatings("https://www.codechef.com/users/devansh158", "codechef");
     fetchRatings("https://codeforces.com/profile/de_vil158", "codeforces");
-  }, [fetchRatings]);
+  }, [fetchRatings, refresh]);
 
   const Rating = useMemo(() => [
     {
@@ -60,7 +69,7 @@ function Rating() {
     },
   ], [CodeChefRating, CodeForcesRating]);
 
-  const SkillsCard = useMemo(() => ({ index, title, icon }) => (
+  const SkillsCard = useCallback(({ index, title, icon }) => (
     <Tilt className='w-56'>
       <motion.div
         variants={fadeIn("right", "spring", index * 0.5, 0.75)}
@@ -77,10 +86,11 @@ function Rating() {
   ), []);
 
   return (
-    <div className='mt-10 flex flex-wrap align-center justify-center gap-10'>
-      {Rating.map((item, index) => (
-        <SkillsCard key={item.title} index={index} {...item} />
-      ))}
+    <div className='flex flex-wrap align-center justify-center gap-10'>
+      {loading && <p className="text-white">Loading ratings...</p>}
+      {error && <p className="text-red-500">{error}</p>}
+      {!loading &&
+        Rating.map((item, index) => <SkillsCard key={item.title} index={index} {...item} />)}
     </div>
   );
 }

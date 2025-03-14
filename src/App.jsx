@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Nav, Hero, About, TechBalls, Project, Contact, Stars } from "./components";
 import { github, linkedln } from "./assets";
+import Rating from "./components/Rating";
 
 function App() {
   const [year, setYear] = useState(new Date().getFullYear());
@@ -15,6 +16,7 @@ function App() {
       <Nav />
       <Hero />
       <About />
+      <Rating />
       <TechBalls />
       <Project />
 
