@@ -44,7 +44,7 @@ const projects = [
         ],
         image: Todo,
         source_code_link: "https://github.com/RulerDevansh/Todo-App",
-        Deploy_link: "https://rulerdevansh.github.io/Todo-App/",
+        Deploy_link: "https://todo-app-devansh.web.app/",
     },
     {
       name: "Currency Converter",
@@ -66,7 +66,7 @@ const projects = [
       ],
       image: CurrencyConverter,
       source_code_link: "https://github.com/RulerDevansh/Currency-Converter",
-      Deploy_link : "https://rulerdevansh.github.io/Currency-Converter/",
+      Deploy_link : "https://currency-converter-devansh.web.app/",
     },
     {
         name: "Youtube FeedEnhancer",
@@ -106,7 +106,7 @@ const projects = [
       ],
       image: RockPaperSissors,
       source_code_link: "https://github.com/RulerDevansh/Rock-paper-scissors-game",
-      Deploy_link: "https://rulerdevansh.github.io/Rock-paper-scissors-game/",
+      Deploy_link: "https://rock-paper-scissors-devansh.web.app/",
     },
   ];
 
