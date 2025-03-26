@@ -35,6 +35,7 @@ import AmazonClone from "./AmazonClone.png";
 import Todo from "./Todo.png";
 import YoutubeFeed from "./YoutubeFeed.png"
 import Portfolio from "./portfolio.png";
+import DiscordColorText from "./DiscordColorText.png";
 
 import MouseTrackerRobotVid from "./MobileRobot.mp4";
 
@@ -53,13 +54,17 @@ export {
   spline,
   tailwind,
   threejs,
+
+  DiscordColorText,
   CurrencyConverter,
   RockPaperSissors,
   AmazonClone,
   Todo,
   YoutubeFeed,
   Portfolio,
+
   MouseTrackerRobotVid,
+
   c,
   cpp,
   java,
@@ -67,6 +72,8 @@ export {
   dsa,
   sql,
   oop,
+
+
   CodeChef,
   CodeForces,
 };

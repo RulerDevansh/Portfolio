@@ -126,7 +126,7 @@ function About() {
         className='mt-4 text-violet-200 text-[17px] max-w-3xl leading-[30px] '
       >
         I'm a passionate web developer with a strong focus on front-end technologies.<br />  
-I specialize in <b>React</b> and have experience working with libraries like <b>React Router DOM, Framer Motion, Material UI, and Redux</b> to build dynamic and interactive user interfaces.<br /><br />  
+I specialize in <b>React</b> and have experience working with libraries like <b>React Router DOM, Framer Motion, Mantine UI, Material UI, and Redux</b> to build dynamic and interactive user interfaces.<br /><br />  
 
 Beyond web development, I also explore <b>3D design</b> using <b>Spline</b> and have a basic understanding of <b>Three.js</b> for integrating 3D elements into web applications.<br /><br />  
 

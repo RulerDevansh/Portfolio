@@ -1,55 +1,61 @@
 import React from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
-import { CurrencyConverter, github, Portfolio, RockPaperSissors, Todo, YoutubeFeed } from "../assets";
+import { CurrencyConverter, DiscordColorText, github, Portfolio, RockPaperSissors, Todo, YoutubeFeed } from "../assets";
 import { fadeIn , textVariant } from "../utils/motion";
 import { SectionWrapper } from "../HigherOrderComponent";
 
 const projects = [
+  {
+    name: "My Portfolio",
+    description:
+    "A Portfolio Website that showcases my skills, projects, and contact information.Demonstrates the use of Spline, Threjs, Framer-Motion, React-Router, Emailjs react libraries",
+    tags: [
     {
-      name: "My Portfolio",
-      description:
-        "A Portfolio Website that showcases my skills, projects, and contact information.Demonstrates the use of Spline, Threjs, Framer-Motion, React-Router, Emailjs react libraries",
-      tags: [
-        {
-          name: "react",
-          color: "blue-text-gradient",
-        },
-        {
-          name: "tailwind",
-          color: "green-text-gradient",
-        },
-        {
-          name: "Spline",
-          color: "pink-text-gradient",
-        },
-      ],
-      image: Portfolio,
+      name: "react",
+      color: "blue-text-gradient",
+    },
+    {
+      name: "tailwind",
+      color: "green-text-gradient",
+    },
+    {
+      name: "Spline",
+      color: "pink-text-gradient",
+    },
+    ],
+    image: Portfolio,
       source_code_link: "https://github.com/RulerDevansh/Portfolio",
       Deploy_link: "https://devansh-srivastava-portfolio.web.app/",
     },
+
     {
-        name: "Todo App",
-        description:
-          "A simple todo app that allows users to add, and delete tasks, and mark them as complete . Demonstrates the use of useState() Hook",
-        tags: [
-          {
-            name: "react",
-            color: "blue-text-gradient",
-          },
-          {
-            name: "CSS",
-            color: "green-text-gradient",
-          },
-        ],
-        image: Todo,
-        source_code_link: "https://github.com/RulerDevansh/Todo-App",
-        Deploy_link: "https://todo-app-devansh.web.app/",
+      name: "Discord Colored Text Generator",
+      description:
+      "This app generates Discord-colored text code. App Demonstrates the use of Mantine UI, regex, and innerHTML manipulation.",
+      tags: [
+        {
+          name: "React",
+          color: "blue-text-gradient",
+        },
+        {
+          name: "Mantine UI",
+          color: "green-text-gradient",
+        },
+        {
+          name: "Tailwind",
+          color: "pink-text-gradient",
+        },
+      ],
+      image: DiscordColorText,
+      source_code_link: "https://github.com/RulerDevansh/Discord_Colored_Text",
+      Deploy_link : "https://discord-colored-text-ten.vercel.app/",
     },
+
     {
       name: "Currency Converter",
       description:
-        "A Currency Converter App that allows users to convert one currency to another. Project Demonstrate the use of API",
+      "A Currency Converter App that allows users to convert one currency to another. Project Demonstrate the use of API",
       tags: [
         {
           name: "HTML",
@@ -67,6 +73,25 @@ const projects = [
       image: CurrencyConverter,
       source_code_link: "https://github.com/RulerDevansh/Currency-Converter",
       Deploy_link : "https://currency-converter-devansh.web.app/",
+    },
+
+    {
+        name: "Todo App",
+        description:
+          "A simple todo app that allows users to add, and delete tasks, and mark them as complete . Demonstrates the use of useState() Hook",
+        tags: [
+          {
+            name: "react",
+            color: "blue-text-gradient",
+          },
+          {
+            name: "CSS",
+            color: "green-text-gradient",
+          },
+        ],
+        image: Todo,
+        source_code_link: "https://github.com/RulerDevansh/Todo-App",
+        Deploy_link: "https://todo-app-devansh.web.app/",
     },
     {
         name: "Youtube FeedEnhancer",
