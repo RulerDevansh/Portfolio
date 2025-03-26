@@ -12,7 +12,7 @@ const projects = [
     "A Portfolio Website that showcases my skills, projects, and contact information.Demonstrates the use of Spline, Threjs, Framer-Motion, React-Router, Emailjs react libraries",
     tags: [
     {
-      name: "react",
+      name: "React",
       color: "blue-text-gradient",
     },
     {
@@ -81,7 +81,7 @@ const projects = [
           "A simple todo app that allows users to add, and delete tasks, and mark them as complete . Demonstrates the use of useState() Hook",
         tags: [
           {
-            name: "react",
+            name: "React",
             color: "blue-text-gradient",
           },
           {
