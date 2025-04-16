@@ -1,4 +1,3 @@
-import React from "react";
 import Tilt from "react-parallax-tilt";
 import { motion } from "framer-motion";
 import { CurrencyConverter, DiscordColorText, github, Portfolio, RockPaperSissors, Todo, YoutubeFeed } from "../assets";
@@ -51,48 +50,53 @@ const projects = [
       source_code_link: "https://github.com/RulerDevansh/Discord_Colored_Text",
       Deploy_link : "https://discord-colored-text-ten.vercel.app/",
     },
+    
+    {
+        name: "Todo App",
+        description:
+          "A multi-user task management app where each user maintains a separate task list. Utilizes Redux for global state and user-specific task handling, with Redux Thunk to fetch public IP and real-time timestamp when adding tasks.",
+        tags: [
+          {
+            name: "REDUX",
+            color: "blue-text-gradient",
+          },
+          {
+            name: "React",
+            color: "green-text-gradient",
+          },
+          {
+            name: "Tailwind",
+            color: "pink-text-gradient",
+          },
+        ],
+        image: Todo,
+        source_code_link: "https://github.com/RulerDevansh/Todo-APP",
+        Deploy_link: "https://todo-app-devansh.web.app/",
+    },
 
     {
       name: "Currency Converter",
       description:
-      "A Currency Converter App that allows users to convert one currency to another. Project Demonstrate the use of API",
+      "A TypeScript-based Currency Converter App that enables users to convert currencies in real-time demonstrating the use of API's",
       tags: [
         {
-          name: "HTML",
+          name: "TypeScript",
           color: "blue-text-gradient",
         },
         {
-          name: "CSS",
+          name: "Tailwind",
           color: "green-text-gradient",
         },
         {
-          name: "JavaScript",
+          name: "React",
           color: "pink-text-gradient",
         },
       ],
       image: CurrencyConverter,
-      source_code_link: "https://github.com/RulerDevansh/Currency-Converter",
+      source_code_link: "https://github.com/RulerDevansh/CurrencyConverterTypeScript",
       Deploy_link : "https://currency-converter-devansh.web.app/",
     },
 
-    {
-        name: "Todo App",
-        description:
-          "A simple todo app that allows users to add, and delete tasks, and mark them as complete . Demonstrates the use of useState() Hook",
-        tags: [
-          {
-            name: "React",
-            color: "blue-text-gradient",
-          },
-          {
-            name: "CSS",
-            color: "green-text-gradient",
-          },
-        ],
-        image: Todo,
-        source_code_link: "https://github.com/RulerDevansh/Todo-App",
-        Deploy_link: "https://todo-app-devansh.web.app/",
-    },
     {
         name: "Youtube FeedEnhancer",
         description:

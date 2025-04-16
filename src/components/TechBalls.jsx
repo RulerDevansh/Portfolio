@@ -1,20 +1,22 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SectionWrapper } from "../HigherOrderComponent";
 import { motion } from "framer-motion";
 import { fadeIn } from "../utils/motion";
 import { Ball } from "./canvas";
-import { css, git, html, javascript, reactjs, redux, spline, tailwind, threejs } from "../assets";
+import { css, git, html, javascript, reactjs, redux, spline, tailwind, threejs, typescript } from "../assets";
 
 const technologies = [
   { name: "React JS", icon: reactjs },
   { name: "Redux Toolkit", icon: redux },
   { name: "Tailwind CSS", icon: tailwind },
+  { name: "TypeScript", icon: typescript },
   { name: "HTML 5", icon: html },
   { name: "CSS 3", icon: css },
   { name: "JavaScript", icon: javascript },
   { name: "Three JS", icon: threejs },
   { name: "Spline", icon: spline },
   { name: "git", icon: git },
+
 ];
 
 function TechBalls() {

@@ -1,8 +1,7 @@
-import React from 'react'
 import Tilt from 'react-parallax-tilt'; // using for tilt effect
 import { motion } from 'framer-motion'
 import { fadeIn, textVariant } from "../utils/motion";
-import { c, cpp, css, dsa, html, java, javascript, oop, python, reactjs, redux, spline, sql, tailwind } from '../assets';
+import { c, cpp, css, dsa, html, java, javascript, oop, python, reactjs, redux, spline, sql, tailwind, typescript } from '../assets';
 import { SectionWrapper } from '../HigherOrderComponent';
 import { staggerContainer } from '../utils/motion';
 
@@ -13,16 +12,16 @@ const libraries = [
     icon: reactjs,
   },
   {
-    title: "3D Model Designing In Spline",
-    icon: spline,
+    title: "Redux",
+    icon: redux,
   },
   {
     title: "Tailwind Css",
     icon: tailwind,
   },
   {
-    title: "Redux",
-    icon: redux,
+    title: "3D Model Designing In Spline",
+    icon: spline,
   },
 ];
 const techstack = [
@@ -53,6 +52,10 @@ const techstack = [
   {
     title: "Object Oriented Programming",
     icon: oop,
+  },
+  {
+    title: " Typescript ",
+    icon: typescript,
   },
   {
     title: " HTML ",
@@ -130,7 +133,7 @@ I specialize in <b>React</b> and have experience working with libraries like <b>
 
 Beyond web development, I also explore <b>3D design</b> using <b>Spline</b> and have a basic understanding of <b>Three.js</b> for integrating 3D elements into web applications.<br /><br />  
 
-In addition to front-end development, I have a solid foundation in <b>Data Structures & Algorithms (DSA)</b> and programming languages like <b>C, C++, Java, Python, and JavaScript</b>.<br />  
+In addition to front-end development, I have a solid foundation in <b>Data Structures & Algorithms (DSA)</b> and programming languages like <b>C, C++, Java, Python, JavaScript and Typescript</b>.<br />  
 I am also proficient in <b>Object-Oriented Programming (OOP)</b> and <b>SQL</b> for database management.<br /><br />  
 
 Currently, I'm a <b>second-year college student</b> at <b>INDIAN INSTITUTE OF INFORMATION TECHNOLOGY, PUNE (IIITP)</b>, dedicated to expanding my skills and staying up-to-date with the latest advancements in web technologies.<br />  
