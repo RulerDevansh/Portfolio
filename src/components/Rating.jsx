@@ -42,11 +42,8 @@ async function fetchViaProxy(url) {
 function Rating() {
   // Fallback values shown while loading or on error
   const [CodeChefRating,   setCodeChefRating]   = useState({ current: 1572, max: 1572 });
-  const [CodeForcesRating, setCodeForcesRating] = useState({ current: 942,  max: 942  });
-  const [loading,  setLoading]  = useState(true);
-  // Per-platform live status: null = loading, true = live, false = failed (showing fallback)
-  const [cfLive,   setCfLive]   = useState(null);
-  const [ccLive,   setCcLive]   = useState(null);
+  const [CodeForcesRating, setCodeForcesRating] = useState({ current: 1362, max: 1362 });
+  const [loading, setLoading] = useState(true);
 
   const fetchCodeForces = useCallback(async () => {
     // Codeforces blocks direct CORS requests from browsers — use proxy to reach the API
@@ -58,11 +55,29 @@ function Rating() {
       current: user.rating    ?? prev.current,
       max:     user.maxRating ?? prev.max,
     }));
-    setCfLive(true);
   }, []);
 
   const fetchCodeChef = useCallback(async () => {
-    // CodeChef has no public API — fetch the profile page via CORS proxy and parse embedded HTML
+    // 1. Try the unofficial CodeChef JSON API (no proxy/CORS needed, returns clean JSON)
+    try {
+      const res = await fetch(`https://codechef-api.vercel.app/${CC_USERNAME}`, {
+        signal: AbortSignal.timeout(9000),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        if (data.status === "Success" && data.rating) {
+          setCodeChefRating({
+            current: Number(data.rating),
+            max:     Number(data.highest_rating ?? data.rating),
+          });
+          return;
+        }
+      }
+    } catch {
+      // fall through to proxy-based scraping
+    }
+
+    // 2. Fallback: fetch the profile page via CORS proxy and parse embedded HTML
     const html = await fetchViaProxy(`https://www.codechef.com/users/${CC_USERNAME}`);
 
     // Current rating  →  class="rating-number">XXXX
@@ -76,17 +91,14 @@ function Rating() {
       current: Number(currentMatch[1]),
       max:     maxMatch ? Number(maxMatch[1]) : Number(currentMatch[1]),
     });
-    setCcLive(true);
   }, []);
 
   useEffect(() => {
     setLoading(true);
-    setCfLive(null);
-    setCcLive(null);
 
     Promise.allSettled([
-      fetchCodeForces().catch((err) => { setCfLive(false); console.warn("CF fetch failed:", err.message); throw err; }),
-      fetchCodeChef().catch((err)   => { setCcLive(false); console.warn("CC fetch failed:", err.message); throw err; }),
+      fetchCodeForces(),
+      fetchCodeChef(),
     ]).then(() => setLoading(false));
   }, [fetchCodeForces, fetchCodeChef]);
 
@@ -94,16 +106,14 @@ function Rating() {
     {
       title: `CodeChef Rating: ${CodeChefRating.current}   Max: ${CodeChefRating.max}`,
       icon:  CodeChef,
-      isLive: ccLive,
     },
     {
       title: `CodeForces Rating: ${CodeForcesRating.current}   Max: ${CodeForcesRating.max}`,
       icon:  CodeForces,
-      isLive: cfLive,
     },
-  ], [CodeChefRating, CodeForcesRating, ccLive, cfLive]);
+  ], [CodeChefRating, CodeForcesRating]);
 
-  const SkillsCard = useCallback(({ index, title, icon, isLive }) => (
+  const SkillsCard = useCallback(({ index, title, icon }) => (
     <Tilt className='w-56'>
       <motion.div
         variants={fadeIn("right", "spring", index * 0.5, 0.75)}
@@ -114,16 +124,6 @@ function Rating() {
           <h3 className='text-white text-[18px] sm:text-[20px] font-bold text-center'>
             {title}
           </h3>
-          {/* Per-platform live status badge */}
-          {isLive === null && (
-            <span className='text-yellow-400 text-[12px] mt-1'>⏳ Loading…</span>
-          )}
-          {isLive === true && (
-            <span className='text-green-400 text-[12px] mt-1'>🟢 Live</span>
-          )}
-          {isLive === false && (
-            <span className='text-red-400 text-[12px] mt-1'>🔴 Couldn&apos;t fetch live &mdash; showing last known</span>
-          )}
         </div>
       </motion.div>
     </Tilt>

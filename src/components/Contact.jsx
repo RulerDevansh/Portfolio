@@ -14,6 +14,7 @@ function Contact() {
         message: "",
     });
     const [loading, setLoading] = useState(false);
+    const [isMobile] = useState(() => window.innerWidth < 768);
 
     // Check if form has content
     const isFormFilled = form.name.trim() !== "" || form.message.trim() !== "";
@@ -104,13 +105,15 @@ function Contact() {
           </form>
         </motion.div>
 
-        {/* Earth */}
-        <motion.div
-          variants={slideIn("right", "tween", 0.2, 1)}
-          className="xl:flex-1 xl:h-auto sm:h-[550px] h-[350px]"
-        >
-          <Earth />
-        </motion.div>
+        {/* Earth – not rendered on mobile to prevent WebGL context exhaustion */}
+        {!isMobile && (
+          <motion.div
+            variants={slideIn("right", "tween", 0.2, 1)}
+            className="xl:flex-1 xl:h-auto sm:h-[550px] h-[350px]"
+          >
+            <Earth />
+          </motion.div>
+        )}
       </div>
     );
 }

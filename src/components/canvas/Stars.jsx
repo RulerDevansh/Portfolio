@@ -32,6 +32,11 @@ const Stars = (props) => {
 };
 
 const StarsCanvas = () => {
+  // On mobile skip WebGL entirely — no GPU needed for background
+  if (window.innerWidth < 768) {
+    return <div className='w-full h-full absolute inset-0 z-[-1]' />;
+  }
+
   return (
     <div className='w-full h-auto absolute inset-0 z-[-1]'>
       <Canvas dpr={[1, 1]} camera={{ position: [0, 0, 1] }} gl={{ preserveDrawingBuffer: false, antialias: false }}>

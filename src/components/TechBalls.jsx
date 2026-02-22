@@ -132,38 +132,39 @@ function BallGrid() {
  * Accepts a `techs` array (the 6 randomly selected items).
  */
 function MobileBallGrid({ techs }) {
-  const { viewport, gl } = useThree();
+  const { viewport } = useThree();
 
   const rotations   = useRef(techs.map(() => ({ x: 0, y: 0 })));
   const velocities  = useRef(techs.map(() => ({ x: 0, y: 0 })));
-  const dragTarget  = useRef(null);
-  const prevPointer = useRef({ x: 0, y: 0 });
+  const dragTarget    = useRef(null);
+  const prevPointer   = useRef({ x: 0, y: 0 });
 
   useEffect(() => {
-    const canvas = gl.domElement;
-    const onMove = (e) => {
+    // Mobile uses ONLY document touch events.
+    // No canvas pointer listeners — pointerleave would null dragTarget
+    // mid-drag and kill velocity before the finger lifts.
+    const onTouchMove = (e) => {
       if (dragTarget.current === null) return;
+      e.preventDefault();
+      const t = e.touches[0];
       const idx = dragTarget.current;
-      const dx = (e.touches ? e.touches[0].clientX : e.clientX) - prevPointer.current.x;
+      const dx = t.clientX - prevPointer.current.x;
       const vy = dx * 0.018;
       rotations.current[idx].y += vy;
       velocities.current[idx].y = vy;
-      prevPointer.current = {
-        x: e.touches ? e.touches[0].clientX : e.clientX,
-        y: e.touches ? e.touches[0].clientY : e.clientY,
-      };
+      prevPointer.current = { x: t.clientX, y: t.clientY };
     };
-    const onUp = () => { dragTarget.current = null; };
+    const onTouchEnd = () => { dragTarget.current = null; };
 
-    canvas.addEventListener('pointermove', onMove);
-    canvas.addEventListener('pointerup',   onUp);
-    canvas.addEventListener('pointerleave', onUp);
+    document.addEventListener('touchmove', onTouchMove, { passive: false });
+    document.addEventListener('touchend',  onTouchEnd);
+    document.addEventListener('touchcancel', onTouchEnd);
     return () => {
-      canvas.removeEventListener('pointermove', onMove);
-      canvas.removeEventListener('pointerup',   onUp);
-      canvas.removeEventListener('pointerleave', onUp);
+      document.removeEventListener('touchmove', onTouchMove);
+      document.removeEventListener('touchend',  onTouchEnd);
+      document.removeEventListener('touchcancel', onTouchEnd);
     };
-  }, [gl]);
+  }, []);
 
   useFrame(() => {
     for (let i = 0; i < techs.length; i++) {
@@ -217,17 +218,16 @@ function MobileBallGrid({ techs }) {
 }
 
 function TechBalls() {
-  const [isMobile, setIsMobile]   = useState(false);
+  // Lazy init — correct value on first render, no flash
+  const [isMobile] = useState(() => window.innerWidth < 768);
   const [mobileTechs, setMobileTechs] = useState([]);
 
   useEffect(() => {
-    const mobile = window.innerWidth < 768;
-    setIsMobile(mobile);
-    if (mobile) {
+    if (isMobile) {
       const shuffled = [...technologies].sort(() => 0.5 - Math.random());
       setMobileTechs(shuffled.slice(0, 6));
     }
-  }, []);
+  }, [isMobile]);
 
   // ── Mobile: single WebGL canvas, 2-col grid of 6 random balls ─────────
   if (isMobile) {
@@ -239,10 +239,10 @@ function TechBalls() {
         <div className="w-full h-[520px] cursor-pointer">
           <Canvas
             frameloop="always"
-            dpr={[1, 2]}
+            dpr={[1, 1.5]}
             orthographic
             camera={{ zoom: 22, position: [0, 0, 10] }}
-            gl={{ preserveDrawingBuffer: false, antialias: true }}
+            gl={{ preserveDrawingBuffer: false, antialias: false }}
           >
             <Suspense fallback={<CanvasLoader />}>
               <MobileBallGrid techs={mobileTechs} />
