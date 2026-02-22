@@ -25,9 +25,41 @@ body::-webkit-scrollbar-thumb {
   border-radius: 1.6rem;
 }
 
+/* Scrollable description inside project cards */
+.desc-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+.desc-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.desc-scroll::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.5);
+  border-radius: 4px;
+}
+.desc-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(139, 92, 246, 0.85);
+}
+
 .hero{
   background-image: url(/background.png);
   background-size: cover;
+}
+
+/* Mobile-friendly fade-in animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeInUp 0.6s ease-out;
+  animation-fill-mode: forwards;
 }
 
 
@@ -81,6 +113,7 @@ body::-webkit-scrollbar-thumb {
       #f5af19
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
@@ -97,6 +130,7 @@ body::-webkit-scrollbar-thumb {
       #38ef7d
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
@@ -114,6 +148,7 @@ body::-webkit-scrollbar-thumb {
       #56ccf2
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   
@@ -130,6 +165,7 @@ body::-webkit-scrollbar-thumb {
       #fc6767
     ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
     -webkit-background-clip: text;
+    background-clip: text;
     -webkit-text-fill-color: transparent;
   }
   

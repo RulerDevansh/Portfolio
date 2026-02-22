@@ -9,16 +9,6 @@ export default defineConfig({
       three: path.resolve("./node_modules/three"),
     },
   },
-  base: "/Portfolio/",  
-  build: {  
-    chunkSizeWarningLimit: 100000,
-    rollupOptions: {  
-      output: {  
-        manualChunks: {  
-          vendor: ['react', 'react-dom'],
-        },  
-      },  
-    },  
-  },
+  base: "./",
 });
 

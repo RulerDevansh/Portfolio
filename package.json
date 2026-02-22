@@ -6,15 +6,14 @@
   "scripts": {
     "dev": "vite",
     "build": "vite build",
-    "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
+    "lint": "eslint . --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview"
   },
   "dependencies": {
-    "@emailjs/browser": "^4.4.1",
     "@react-three/drei": "^9.121.5",
     "@react-three/fiber": "^8.17.14",
     "@splinetool/react-spline": "^4.0.0",
-    "@splinetool/runtime": "^1.9.68",
+    "@splinetool/runtime": "^1.10.1",
     "framer-motion": "^12.4.4",
     "maath": "^0.10.8",
     "react": "18.3.1",
@@ -25,19 +24,21 @@
     "three": "0.170.0"
   },
   "devDependencies": {
+    "@eslint/js": "^9.39.3",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@vitejs/plugin-react": "^4.0.3",
+    "@vitejs/plugin-react": "^4.7.0",
     "autoprefixer": "^10.4.20",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react": "^7.32.2",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
+    "eslint": "^10.0.1",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "eslint-plugin-react-refresh": "^0.4.26",
+    "globals": "^17.3.0",
     "postcss": "^8.5.2",
-    "vite": "^4.5.0"
+    "vite": "^6.4.1"
   },
   "overrides": {
-    "three": "0.170.0"
+    "three": "0.170.0",
+    "minimatch": ">=10.2.1"
   }
 }
-

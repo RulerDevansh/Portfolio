@@ -1,9 +1,10 @@
-import React from 'react'
+
 import MouseTrackerRobot from "./MouseTrackerRobot";
+import { motion } from "framer-motion";
 
 function hero() {
   return (
-    <section className='hero relative w-full h-[49.1rem] mx-auto overflow-y-hidden overflow-x-hidden'>
+    <section className='hero relative w-full h-screen mx-auto overflow-y-hidden overflow-x-hidden z-0'>
       <div
         className={`absolute inset-0 top-[120px]  max-w-7xl mx-auto p-6 sm:p-16 flex flex-row items-start gap-5`}
       >
@@ -22,9 +23,26 @@ function hero() {
           
         </div>
       </div>
-        <div className='h-[150%] w-[100%] sm:w-[150%] mt-20 absolute'>
+        <div className='h-[80%] w-[100%] sm:w-[150%] mt-20 absolute  bottom-0 z-[-1]'>
             <MouseTrackerRobot/>
         </div>
+        <div className='absolute bottom-3 w-full flex justify-center items-center'>
+        <a href='#about'>
+          <div className='w-[35px] h-[64px] rounded-3xl border-4 border-secondary flex justify-center items-start p-2'>
+            <motion.div
+              animate={{
+                y: [0, 24, 0],
+              }}
+              transition={{
+                duration: 1.0,
+                repeat: Infinity,
+                repeatType: "loop",
+              }}
+              className='w-3 h-3 rounded-full bg-secondary mb-1'
+            />
+          </div>
+        </a>
+      </div>
     </section>
   )
 }
