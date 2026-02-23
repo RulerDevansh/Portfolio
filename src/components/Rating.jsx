@@ -7,36 +7,16 @@ import { CodeChef, CodeForces } from '../assets';
 const CF_HANDLE   = "de_vil158";
 const CC_USERNAME = "devansh_iiitp";
 
-// Both platforms are fetched via CORS proxy — Codeforces blocks direct browser requests
-const CORS_PROXIES = [
-  "https://corsproxy.io/?",
-  "https://api.allorigins.win/get?url=",
-];
-
-async function fetchViaProxy(url) {
-  for (const proxy of CORS_PROXIES) {
-    try {
-      const res = await fetch(`${proxy}${encodeURIComponent(url)}`, {
-        signal: AbortSignal.timeout(9000),
-      });
-      if (!res.ok) continue;
-      // Always read as text first:
-      //   corsproxy.io  → returns the raw response body (HTML or JSON text) directly
-      //   allorigins.win → returns a JSON wrapper: { contents: "<raw body>", status: {...} }
-      const text = await res.text();
-      try {
-        const json = JSON.parse(text);
-        // allorigins.win path — unwrap the contents field
-        return json.contents ?? text;
-      } catch {
-        // corsproxy.io path — text IS the raw body, use it directly
-        return text;
-      }
-    } catch {
-      // try next proxy
-    }
-  }
-  throw new Error("All CORS proxies failed");
+/**
+ * Fetch a URL through allorigins.win CORS proxy.
+ * Returns the raw body (HTML / JSON text) of the target URL.
+ */
+async function fetchViaAllOrigins(url) {
+  const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(url)}`;
+  const res = await fetch(proxyUrl, { signal: AbortSignal.timeout(12000) });
+  if (!res.ok) throw new Error(`allorigins proxy returned ${res.status}`);
+  const wrapper = await res.json();          // { contents: "...", status: {...} }
+  return wrapper.contents;
 }
 
 function Rating() {
@@ -46,9 +26,13 @@ function Rating() {
   const [loading, setLoading] = useState(true);
 
   const fetchCodeForces = useCallback(async () => {
-    // Codeforces blocks direct CORS requests from browsers — use proxy to reach the API
-    const text = await fetchViaProxy(`https://codeforces.com/api/user.info?handles=${CF_HANDLE}`);
-    const data = JSON.parse(text);
+    // Codeforces API supports CORS (Access-Control-Allow-Origin: *) — fetch directly
+    const res = await fetch(
+      `https://codeforces.com/api/user.info?handles=${CF_HANDLE}`,
+      { signal: AbortSignal.timeout(10000) },
+    );
+    if (!res.ok) throw new Error(`CF API returned ${res.status}`);
+    const data = await res.json();
     if (data.status !== "OK") throw new Error(`CF API status: ${data.status}`);
     const user = data.result[0];
     setCodeForcesRating((prev) => ({
@@ -58,27 +42,8 @@ function Rating() {
   }, []);
 
   const fetchCodeChef = useCallback(async () => {
-    // 1. Try the unofficial CodeChef JSON API (no proxy/CORS needed, returns clean JSON)
-    try {
-      const res = await fetch(`https://codechef-api.vercel.app/${CC_USERNAME}`, {
-        signal: AbortSignal.timeout(9000),
-      });
-      if (res.ok) {
-        const data = await res.json();
-        if (data.status === "Success" && data.rating) {
-          setCodeChefRating({
-            current: Number(data.rating),
-            max:     Number(data.highest_rating ?? data.rating),
-          });
-          return;
-        }
-      }
-    } catch {
-      // fall through to proxy-based scraping
-    }
-
-    // 2. Fallback: fetch the profile page via CORS proxy and parse embedded HTML
-    const html = await fetchViaProxy(`https://www.codechef.com/users/${CC_USERNAME}`);
+    // Scrape CodeChef profile page via allorigins CORS proxy and parse rating from HTML
+    const html = await fetchViaAllOrigins(`https://www.codechef.com/users/${CC_USERNAME}`);
 
     // Current rating  →  class="rating-number">XXXX
     const currentMatch = html.match(/class="rating-number">(\d+)/);
