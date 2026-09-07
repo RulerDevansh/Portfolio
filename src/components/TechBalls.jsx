@@ -6,15 +6,14 @@ import { Canvas, useThree, useFrame } from "@react-three/fiber";
 import { Preload } from "@react-three/drei";
 import { BallScene } from "./canvas";
 import CanvasLoader from "./Loader";
-import { css, git, html, javascript, reactjs, redux, tailwind, threejs, typescript, mongodb, nodejs, postgresql, tensorflow, python } from "../assets";
+import { css, git, html, javascript, reactjs, redux, docker, threejs, typescript, mongodb, nodejs, tensorflow, python } from "../assets";
 
 const technologies = [
   { name: "MongoDB",      icon: mongodb     },
   { name: "Node JS",      icon: nodejs      },
-  { name: "PostgreSQL",   icon: postgresql  },
   { name: "React JS",     icon: reactjs     },
   { name: "Redux Toolkit",icon: redux       },
-  { name: "Tailwind CSS", icon: tailwind    },
+  { name: "Docker",      icon: docker      },
   { name: "TypeScript",   icon: typescript  },
   { name: "HTML 5",       icon: html        },
   { name: "CSS 3",        icon: css         },

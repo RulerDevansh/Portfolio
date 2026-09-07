@@ -1,6 +1,5 @@
 import { Nav, Hero, About, TechBalls, Project, Contact, Stars } from "./components";
 import { github, linkedln } from "./assets";
-import Rating from "./components/Rating";
 
 const year = new Date().getFullYear();
 
@@ -12,7 +11,6 @@ function App() {
       <Nav />
       <Hero />
       <About />
-      <Rating />
       <TechBalls />
       <Project />
 

@@ -1,9 +1,15 @@
 import Tilt from 'react-parallax-tilt'; // using for tilt effect
 import { motion } from 'framer-motion'
+import {
+  VerticalTimeline,
+  VerticalTimelineElement,
+} from "react-vertical-timeline-component";
+
+import "react-vertical-timeline-component/style.min.css";
 import { fadeIn, textVariant } from "../utils/motion";
 import {
   c, cpp, java, python, javascript, typescript,
-  reactjs, redux, tailwind, html, css,
+  reactjs, redux, docker, html, css,
   nodejs, express,
   mysql, postgresql, mongodb,
   tensorflow, sklearn, numpy, pandas,
@@ -11,6 +17,7 @@ import {
 } from '../assets';
 import { SectionWrapper } from '../HigherOrderComponent';
 import { staggerContainer } from '../utils/motion';
+import Rating from "./Rating";
 
 
 const programmingLanguages = [
@@ -25,7 +32,7 @@ const programmingLanguages = [
 const webDevelopment = [
   { title: "React.js",    icon: reactjs    },
   { title: "Redux",       icon: redux      },
-  { title: "Tailwind CSS",icon: tailwind   },
+  { title: "Docker",      icon: docker     },
   { title: "HTML5",       icon: html       },
   { title: "CSS3",        icon: css        },
   { title: "Node.js",     icon: nodejs     },
@@ -45,6 +52,29 @@ const otherConcepts = [
   { title: "Socket.IO",   icon: socketio   },
   { title: "DSA",         icon: dsa        },
   { title: "OOPs",        icon: oop        },
+];
+
+const experiences = [
+  {
+    title: "Core Member, Web Development Team",
+    company_name: "ICONCLAVE college event",
+    date: "Jan 2026 - Mar 2026",
+    points: [
+      "Collaborated with designers to translate event requirements into production-ready layouts.",
+      "Contributed to the event website and implemented responsive UI components for attendee-facing sections.",
+      "Worked with the team to deliver polished pages on a tight event timeline.",
+    ],
+  },
+  {
+    title: "SDE Intern",
+    company_name: "Baseraa",
+    date: "Jun 2026 - Present",
+    points: [
+      "Developing a unified restaurant growth platform integrating customer review data from Google Maps and Zomato with AI-driven sentiment analysis and actionable business insights.",
+      "Engineering an AI ad studio for generating and launching targeted marketing campaigns across Meta, Google, and WhatsApp, with automated audience targeting and campaign workflows.",
+      "Building multi-outlet management, approval-based discount distribution, and revenue projection modules to enable data-driven marketing and operational decision-making.",
+    ],
+  },
 ];
 
 const SkillsCard = ({ index, title, icon }) => (
@@ -70,6 +100,44 @@ const SkillsCard = ({ index, title, icon }) => (
   </Tilt>
 );
 
+const ExperienceCard = ({ experience }) => {
+  return (
+    <VerticalTimelineElement
+      contentStyle={{
+        background: "#1d1836",
+        color: "#fff",
+      }}
+      contentArrowStyle={{ borderRight: "7px solid  #232631" }}
+      date={experience.date}
+      iconStyle={{
+        background: "#1d1836",
+        color: "#fff",
+        boxShadow: "0 0 0 4px rgba(255,255,255,0.12)",
+      }}
+      icon={
+        <div className="flex h-full w-full items-center justify-center">
+          <span className="h-3 w-3 rounded-full bg-violet-400" />
+        </div>
+      }
+    >
+      <div>
+        <h3 className="text-white text-[24px] font-bold">{experience.title}</h3>
+        <p className="text-secondary text-[16px] font-semibold" style={{ margin: 0 }}>
+          {experience.company_name}
+        </p>
+      </div>
+
+      <ul className="mt-5 list-disc ml-5 space-y-2">
+        {experience.points.map((point, index) => (
+          <li key={`experience-point-${experience.company_name}-${index}`} className="text-white-100 text-[14px] pl-1 tracking-wider">
+            {point}
+          </li>
+        ))}
+      </ul>
+    </VerticalTimelineElement>
+  );
+};
+
 
 function About() {
   return (
@@ -90,24 +158,17 @@ function About() {
 
       <motion.p
         variants={fadeIn("","",0.1,1)}
-        className='mt-4 text-violet-200 text-[17px] max-w-3xl leading-[30px] '
-      >
-        I'm a passionate web developer with experience in building full-stack applications using <b>React, Node.js, Express.js</b>, and <b>MongoDB</b>.<br />  
-I’ve worked extensively with libraries like <b>Redux, React Router DOM, Framer Motion, Mantine UI</b>, and <b>Tailwind CSS</b> to build responsive and interactive user interfaces.<br />
+        className='mt-4 text-violet-200 text-[17px] max-w-3xl leading-[30px]'
 
-I have developed real-time applications using <b>Socket.IO</b>, and have experience integrating <b>AI models</b> into web applications—handling prompts, generating responses, and using them dynamically within the UI. I've also deployed projects on platforms like <b>Vercel</b> , <b>Firebase</b> <b>DigitalOcean</b>.<br /><br />
+        >
 
-Beyond core development, I enjoy experimenting with <b>3D design</b> using <b>Spline</b> and have a working understanding of <b>Three.js</b> for embedding 3D elements in web applications.<br /><br />  
+        I'm a <b>Full Stack MERN Developer</b> focused on building <b>scalable, real-time, and AI-powered applications</b> using <b>React, Node.js, Express.js, MongoDB, PostgreSQL</b>, and <b>Redis</b>.<br /><br />
 
-I’m also proficient in <b>Data Structures & Algorithms (DSA)</b> and programming languages like <b>C, C++, Java, Python, JavaScript</b>, and <b>TypeScript</b>, with a solid foundation in <b>Object-Oriented Programming (OOP)</b> and <b>SQL</b>.<br />
+        I have hands-on experience with <b>System Design, Docker, AWS, FastAPI, TensorFlow</b>, and building high-performance backend systems with caching, authentication, REST APIs, and real-time communication using <b>Socket.IO</b>.<br /><br />
 
-Currently, I’m a <b>third-year student</b> at <b>Indian Institute of Information Technology, Pune (IIITP)</b>, constantly working to expand my skills and stay updated with evolving web technologies.<br />  
-I love exploring new tools, solving real-world problems, and bringing ideas to life through code.<br /><br />  
-
-Let's connect and build something impactful! 🚀<br /><br />
-
-
+        Currently, I'm a <b>final-year B.Tech CSE student</b> at <b>Indian Institute of Information Technology, Pune</b>, pursuing an Honors specialization in <b>Artificial Intelligence</b>. I enjoy solving challenging problems, learning how large-scale systems work, and turning ideas into impactful software. 🚀
       </motion.p>
+
 
       <motion.div variants={fadeIn("", "", 0.2, 1)} className="mt-2 mb-16">
         <a
@@ -119,6 +180,19 @@ Let's connect and build something impactful! 🚀<br /><br />
           View Resume
         </a>
       </motion.div>
+
+      <motion.div variants={textVariant(.5)}>
+        <h2 className='text-violet-300 font-black md:text-[50px] sm:text-[40px] xs:text-[30px] text-[20px]'>
+          Work Experience.
+        </h2>
+      </motion.div>
+      <div className='mt-12 flex flex-col'>
+        <VerticalTimeline lineColor="#ffffff">
+          {experiences.map((experience, index) => (
+            <ExperienceCard key={`experience-${index}`} experience={experience} />
+          ))}
+        </VerticalTimeline>
+      </div>
 
       <motion.div variants={textVariant(.5)}>
         <h2 className='text-violet-300 font-black md:text-[60px] sm:text-[50px] xs:text-[40px] text-[30px]'>
@@ -186,23 +260,16 @@ Let's connect and build something impactful! 🚀<br /><br />
           <SkillsCard key={skill.title} index={index} {...skill} />
         ))}
       </motion.div>
+
       <div className='mt-12' />
       <motion.div variants={textVariant(.5)}>
         <h2 className='text-violet-300 font-black md:text-[50px] sm:text-[40px] xs:text-[30px] text-[20px] '>
-          My Current Ratings <motion.span
-        className="inline-block text-[20px] text-violet-500"
-        animate={{
-          opacity: [1, 0, 1],
-          transition: {
-            duration: 2.5,
-            repeat: Infinity,
-            ease: "easeInOut",
-            times: [0, 0.5, 1]
-          }
-        }}
-          >These Update In RealTime !! 😊</motion.span> 
+          My Current Ratings
         </h2>
-      </motion.div>      
+      </motion.div>
+      <div className='mt-8'>
+        <Rating />
+      </div>
     </>
       )
 }

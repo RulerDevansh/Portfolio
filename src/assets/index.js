@@ -24,7 +24,7 @@ import mongodb from "./tech/mongodb.png";
 import nodejs from "./tech/nodejs.png";
 import express from "./tech/express.png";
 import postgresql from "./tech/postgresql.svg";
-import tensorflow from "./tech/tensorflow.svg";
+import tensorflow from "./tech/tensorflow.png";
 import numpy from "./tech/numpy.svg";
 import pandas from "./tech/pandas.svg";
 import sklearn from "./tech/sklearn.svg";
@@ -33,13 +33,13 @@ import socketio from "./tech/socketio.svg";
 
 import reactjs from "./tech/reactjs.png";
 import redux from "./tech/redux.png";
-import tailwind from "./tech/tailwind.png";
+import docker from "./tech/docker.png";
 import threejs from "./tech/threejs.png";
 
 
 import CurrencyConverter from "./CurrencyConverter.png";
 import RockPaperSissors from "./RockPaperSissors.png";
-
+import SnipShort from "./SnipShort.png";
 import Todo from "./Todo.png";
 import YoutubeFeed from "./YoutubeFeed.png"
 import Portfolio from "./portfolio.png";
@@ -64,7 +64,7 @@ export {
   javascript,
   reactjs,
   redux,
-  tailwind,
+  docker,
   threejs,
   typescript,
   mongodb,
@@ -76,6 +76,7 @@ export {
   pandas,
   sklearn,
 
+  SnipShort,
   DiscordColorText,
   CurrencyConverter,
   RockPaperSissors,
